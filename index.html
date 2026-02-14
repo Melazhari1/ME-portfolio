@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed elazhari - Unique vCard Template</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body
+    class="bg-black text-gray-300 font-sans min-h-screen flex items-center justify-center p-4 md:p-8 overflow-hidden relative">
+
+    <!-- Background Slider Container -->
+    <div id="bg-slider" class="fixed inset-0 z-0">
+        <div class="bg-slider-image active"
+            style="background-image: url('https://www.transparenttextures.com/patterns/cubes.png'); opacity: 0.5; background-repeat: repeat; background-size: auto;">
+        </div>
+        <div class="bg-slider-image"
+            style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+        </div>
+        <div class="bg-slider-image"
+            style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+        </div>
+    </div>
+
+    <!-- Settings Panel -->
+    <div id="settings-panel"
+        class="fixed top-24 right-0 bg-dark-gray border-l border-t border-b border-gray-700 p-4 rounded-l-lg shadow-2xl closed flex flex-col gap-4 w-64">
+        <button id="settings-toggle"
+            class="absolute -left-10 top-0 bg-dark-gray text-white p-3 rounded-l-lg border-l border-t border-b border-gray-700 shadow-lg"
+            onclick="toggleSettings()">
+            <i class="fas fa-cog fa-spin"></i>
+        </button>
+
+        <h3 class="text-white font-bold border-b border-gray-700 pb-2">Customize</h3>
+
+        <!-- Theme Toggle -->
+        <div>
+            <label class="block text-xs text-gray-400 mb-2">Theme</label>
+            <div class="flex gap-2 text-xs">
+                <button onclick="toggleTheme('dark')"
+                    class="flex-1 bg-primary text-white py-1 rounded transition-colors"
+                    id="btn-theme-dark">Dark</button>
+                <button onclick="toggleTheme('light')"
+                    class="flex-1 bg-gray-700 hover:bg-primary hover:text-white py-1 rounded transition-colors"
+                    id="btn-theme-light">Light</button>
+            </div>
+        </div>
+
+        <div>
+            <label class="block text-xs text-gray-400 mb-2">Background Mode</label>
+            <div class="flex gap-2 text-xs">
+                <button onclick="toggleBgMode('static')"
+                    class="flex-1 bg-gray-700 hover:bg-primary hover:text-white py-1 rounded transition-colors"
+                    id="btn-bg-static">Static</button>
+                <button onclick="toggleBgMode('slider')"
+                    class="flex-1 bg-gray-700 hover:bg-primary hover:text-white py-1 rounded transition-colors"
+                    id="btn-bg-slider">Slider</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu Button -->
+    <button id="mobile-menu-btn"
+        class="md:hidden fixed top-4 right-4 z-50 bg-sidebar-bg p-3 rounded-full text-white shadow-lg border border-gray-800">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Main Container - Now a wrapper for separated elements -->
+    <div class="w-full max-w-6xl h-[90vh] md:h-[85vh] flex flex-col md:flex-row relative z-10 gap-6">
+
+        <!-- Sidebar / Header - Now a separate container -->
+        <header id="sidebar"
+            class="w-full md:w-80 bg-sidebar-bg flex flex-col rounded-2xl shadow-2xl border border-gray-800 transition-transform duration-300 transform -translate-x-full md:translate-x-0 absolute md:relative z-40 h-full">
+
+            <!-- Profile Section -->
+            <div class="p-8 flex flex-col items-center text-center border-b border-gray-800">
+                <div class="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-700 mb-4 shadow-lg">
+                    <img src="https://ui-avatars.com/api/?name=Mohamed+elazhari&background=222&color=fff&size=256"
+                        alt="Profile" class="w-full h-full object-cover">
+                </div>
+                <h1 class="text-2xl font-bold text-white mb-1">Mohamed elazhari</h1>
+                <p class="text-primary font-medium text-sm tracking-wide">Web Developer</p>
+
+                <div class="flex gap-3 mt-4">
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="#"
+                        class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
+                            class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 overflow-y-auto py-4">
+                <ul class="space-y-1">
+                    <li>
+                        <button onclick="showSection('home')"
+                            class="nav-link active w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary text-primary"
+                            data-target="home">
+                            <i class="fas fa-home w-6 text-center"></i> Home
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('about')"
+                            class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
+                            data-target="about">
+                            <i class="fas fa-user w-6 text-center"></i> About Me
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('resume')"
+                            class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
+                            data-target="resume">
+                            <i class="fas fa-graduation-cap w-6 text-center"></i> Resume
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('portfolio')"
+                            class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
+                            data-target="portfolio">
+                            <i class="fas fa-briefcase w-6 text-center"></i> Portfolio
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('blog')"
+                            class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
+                            data-target="blog">
+                            <i class="fas fa-newspaper w-6 text-center"></i> Blog
+                        </button>
+                    </li>
+                    <li>
+                        <button onclick="showSection('contact')"
+                            class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
+                            data-target="contact">
+                            <i class="fas fa-envelope w-6 text-center"></i> Contact
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="p-8 border-t border-gray-800 text-xs text-gray-500 text-center">
+                &copy; 2026 Melazhari.
+            </div>
+        </header>
+
+        <!-- Main Content Area - Now a separate container -->
+        <main class="flex-1 relative overflow-hidden bg-dark rounded-2xl shadow-2xl border border-gray-800">
+            <div class="h-full overflow-y-auto relative p-8 md:p-12 scroll-container">
+
+                <!-- HOME SECTION -->
+                <section id="home" class="section-content">
+                    <div class="max-w-2xl animate-slide-up flex flex-col items-center py-12">
+                        <span
+                            class="text-primary text-sm font-semibold tracking-wider uppercase mb-2 block">Introduction</span>
+                        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+                            Hi, I'm Mohamed elazhari <br>
+                            <span class="text-gray-400 text-2xl md:text-3xl font-normal">Creative Web Designer</span>
+                        </h2>
+                        <p class="text-gray-400 mb-8 leading-relaxed max-w-lg">
+                            I build accessible, pixel-perfect, and performant web experiences. I am passionate about
+                            creating software that improves the lives of those around me.
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-4">
+                            <button onclick="showSection('portfolio')"
+                                class="px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-green-600 transition-colors shadow-lg shadow-green-900/20">
+                                My Portfolio
+                            </button>
+                            <button onclick="showSection('blog')"
+                                class="px-8 py-3 border border-gray-600 text-white font-semibold rounded-full hover:border-primary hover:text-primary transition-colors">
+                                Read Blog
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ABOUT SECTION -->
+                <section id="about" class="section-content">
+                    <div class="section-header mb-10 border-b border-gray-800 pb-4 relative">
+                        <h2 class="text-3xl font-bold text-white">About Me</h2>
+                        <div class="absolute bottom-[-1px] left-0 w-16 h-0.5 bg-primary"></div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-10 mb-12">
+                        <div>
+                            <p class="text-gray-400 mb-4 leading-relaxed">
+                                I’m a Morocco-based web developer with 8+ years of experience building modern, scalable
+                                web applications. I specialize in PHP ecosystems—WordPress, Symfony, and Drupal—with
+                                solid skills in HTML, CSS, and JavaScript integration. Recently, I’ve been expanding
+                                into React and Next.js to create more dynamic frontends.
+
+                                I focus on clean architecture, maintainable code, and practical solutions that deliver
+                                real business value. Beyond client work, I enjoy creating personal projects, exploring
+                                automation, and continuously improving my technical and problem-solving skills.
+                            </p>
+
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="p-4 bg-sidebar-bg rounded-lg border border-gray-800">
+                                <span class="text-gray-500 text-xs uppercase block mb-1">Age</span>
+                                <span class="text-white font-medium">34</span>
+                            </div>
+                            <div class="p-4 bg-sidebar-bg rounded-lg border border-gray-800">
+                                <span class="text-gray-500 text-xs uppercase block mb-1">Residence</span>
+                                <span class="text-white font-medium">Morocco</span>
+                            </div>
+                            <div class="p-4 bg-sidebar-bg rounded-lg border border-gray-800">
+                                <span class="text-gray-500 text-xs uppercase block mb-1">Freelance</span>
+                                <span class="text-primary font-medium">Available</span>
+                            </div>
+                            <div class="p-4 bg-sidebar-bg rounded-lg border border-gray-800">
+                                <span class="text-gray-500 text-xs uppercase block mb-1">Address</span>
+                                <span class="text-white font-medium">Morocco</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-white mb-6">My Services</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                        <!-- Service 4 -->
+                        <div
+                            class="bg-sidebar-bg p-6 rounded-xl border border-gray-800 hover:border-primary transition-colors group">
+                            <div
+                                class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-primary text-xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i class="fas fa-wordpress"></i>
+                            </div>
+                            <h4 class="text-white font-semibold mb-2">WordPress Development</h4>
+                            <p class="text-sm text-gray-500">Custom themes, plugins, and optimized WordPress solutions
+                                tailored to your business needs.</p>
+                        </div>
+
+                        <!-- Service 5 -->
+                        <div
+                            class="bg-sidebar-bg p-6 rounded-xl border border-gray-800 hover:border-primary transition-colors group">
+                            <div
+                                class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-primary text-xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h4 class="text-white font-semibold mb-2">Symfony & Drupal Solutions</h4>
+                            <p class="text-sm text-gray-500">Robust and scalable web applications built with Symfony and
+                                Drupal for long-term performance.</p>
+                        </div>
+
+                        <!-- Service 6 -->
+                        <div
+                            class="bg-sidebar-bg p-6 rounded-xl border border-gray-800 hover:border-primary transition-colors group">
+                            <div
+                                class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-primary text-xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4 class="text-white font-semibold mb-2">Performance & SEO Optimization</h4>
+                            <p class="text-sm text-gray-500">Speed, SEO, and technical optimizations to improve
+                                visibility, ranking, and user experience.</p>
+                        </div>
+
+                        <!-- Service 7 -->
+                        <div
+                            class="bg-sidebar-bg p-6 rounded-xl border border-gray-800 hover:border-primary transition-colors group">
+                            <div
+                                class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-primary text-xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i class="fas fa-project-diagram"></i>
+                            </div>
+                            <h4 class="text-white font-semibold mb-2">API & GraphQL Integration</h4>
+                            <p class="text-sm text-gray-500">Design and integration of REST and GraphQL APIs for modern,
+                                decoupled applications.</p>
+                        </div>
+
+                        <!-- Service 8 -->
+                        <div
+                            class="bg-sidebar-bg p-6 rounded-xl border border-gray-800 hover:border-primary transition-colors group">
+                            <div
+                                class="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center text-primary text-xl mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h4 class="text-white font-semibold mb-2">Automation & Custom Tools</h4>
+                            <p class="text-sm text-gray-500">Custom scripts and tools to automate workflows, updates,
+                                and repetitive development tasks.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- TESTIMONIALS SLIDER -->
+                    <h3 class="text-xl font-bold text-white mb-6">Quotes</h3>
+                    <div class="relative bg-sidebar-bg p-8 rounded-xl border border-gray-800 overflow-hidden">
+
+                        <div id="testimonial-container" class="transition-transform duration-500 flex w-full">
+                            <!-- Slide 1 -->
+                            <div class="w-full flex-shrink-0 text-center px-4">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Dev+Philosophy&background=random"
+                                        alt="Quote" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">"Clean code is a form of honesty with your future
+                                    self."</p>
+                                <h4 class="text-white font-bold">Anonymous Developer</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">Development Philosophy</span>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="w-full flex-shrink-0 text-center px-4 hidden">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Quran&background=random" alt="Quote"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">﴿وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ﴾</p>
+                                <h4 class="text-white font-bold">القرآن الكريم</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">سورة التوبة 105</span>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="w-full flex-shrink-0 text-center px-4 hidden">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Hadith&background=random" alt="Quote"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">"إنَّ اللهَ يحبُّ إذا عمِل أحدُكم عملًا أن
+                                    يُتقِنَه."</p>
+                                <h4 class="text-white font-bold">حديث نبوي</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">إتقان العمل</span>
+                            </div>
+
+                            <!-- Slide 4 -->
+                            <div class="w-full flex-shrink-0 text-center px-4 hidden">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Imam+Ali&background=random" alt="Quote"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">"قيمةُ كلِّ امرئٍ ما يُحسِنُه."</p>
+                                <h4 class="text-white font-bold">علي بن أبي طالب</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">حكمة إسلامية</span>
+                            </div>
+
+                            <!-- Slide 5 -->
+                            <div class="w-full flex-shrink-0 text-center px-4 hidden">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Al+Ghazali&background=random" alt="Quote"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">"العلمُ بلا عملٍ جنون، والعملُ بلا علمٍ لا يكون."
+                                </p>
+                                <h4 class="text-white font-bold">الإمام الغزالي</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">فلسفة وعلم</span>
+                            </div>
+
+                            <!-- Slide 6 -->
+                            <div class="w-full flex-shrink-0 text-center px-4 hidden">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Philosophy&background=random" alt="Quote"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">"Simplicity is the ultimate sophistication."</p>
+                                <h4 class="text-white font-bold">Leonardo da Vinci</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">Philosophy</span>
+                            </div>
+
+                            <!-- Slide 7 -->
+                            <div class="w-full flex-shrink-0 text-center px-4 hidden">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Quran+Change&background=random"
+                                        alt="Quote" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">﴿إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ
+                                    يُغَيِّرُوا مَا بِأَنفُسِهِمْ﴾</p>
+                                <h4 class="text-white font-bold">القرآن الكريم</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">سورة الرعد 11</span>
+                            </div>
+
+                            <!-- Slide 8 -->
+                            <div class="w-full flex-shrink-0 text-center px-4 hidden">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Hadith+Strength&background=random"
+                                        alt="Quote" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">"المؤمنُ القويُّ خيرٌ وأحبُّ إلى اللهِ من المؤمنِ
+                                    الضعيف."</p>
+                                <h4 class="text-white font-bold">حديث نبوي</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">صحيح مسلم</span>
+                            </div>
+
+                            <!-- Slide 9 -->
+                            <div class="w-full flex-shrink-0 text-center px-4 hidden">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Coding&background=random" alt="Quote"
+                                        class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">"First solve the problem, then write the code."</p>
+                                <h4 class="text-white font-bold">Programming Wisdom</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">Development Mindset</span>
+                            </div>
+
+                            <!-- Slide 10 -->
+                            <div class="w-full flex-shrink-0 text-center px-4 hidden">
+                                <div class="w-16 h-16 mx-auto rounded-full bg-gray-700 overflow-hidden mb-4">
+                                    <img src="https://ui-avatars.com/api/?name=Ibn+Taymiyyah&background=random"
+                                        alt="Quote" class="w-full h-full object-cover">
+                                </div>
+                                <p class="text-gray-300 italic mb-4">"ما لا يكونُ للهِ لا ينفعُ ولا يدوم."</p>
+                                <h4 class="text-white font-bold">ابن تيمية</h4>
+                                <span class="text-primary text-xs uppercase tracking-wide">حكمة إسلامية</span>
+                            </div>
+
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="flex justify-center gap-2 mt-6">
+                            <button onclick="changeTestimonial(0)"
+                                class="w-3 h-3 rounded-full bg-primary test-dot"></button>
+                            <button onclick="changeTestimonial(1)"
+                                class="w-3 h-3 rounded-full bg-gray-600 test-dot hover:bg-gray-500"></button>
+                            <button onclick="changeTestimonial(2)"
+                                class="w-3 h-3 rounded-full bg-gray-600 test-dot hover:bg-gray-500"></button>
+                            <button onclick="changeTestimonial(3)"
+                                class="w-3 h-3 rounded-full bg-gray-600 test-dot hover:bg-gray-500"></button>
+                            <button onclick="changeTestimonial(4)"
+                                class="w-3 h-3 rounded-full bg-gray-600 test-dot hover:bg-gray-500"></button>
+                            <button onclick="changeTestimonial(5)"
+                                class="w-3 h-3 rounded-full bg-gray-600 test-dot hover:bg-gray-500"></button>
+                            <button onclick="changeTestimonial(6)"
+                                class="w-3 h-3 rounded-full bg-gray-600 test-dot hover:bg-gray-500"></button>
+                            <button onclick="changeTestimonial(7)"
+                                class="w-3 h-3 rounded-full bg-gray-600 test-dot hover:bg-gray-500"></button>
+                            <button onclick="changeTestimonial(8)"
+                                class="w-3 h-3 rounded-full bg-gray-600 test-dot hover:bg-gray-500"></button>
+                            <button onclick="changeTestimonial(9)"
+                                class="w-3 h-3 rounded-full bg-gray-600 test-dot hover:bg-gray-500"></button>
+                        </div>
+                    </div>
+
+                </section>
+
+                <!-- RESUME SECTION -->
+                <section id="resume" class="section-content">
+                    <div class="section-header mb-10 border-b border-gray-800 pb-4 relative">
+                        <h2 class="text-3xl font-bold text-white">Resume</h2>
+                        <div class="absolute bottom-[-1px] left-0 w-16 h-0.5 bg-primary"></div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-12">
+                        <!-- Education & Experience -->
+                        <div>
+                            <div class="mb-8">
+                                <h3 class="flex items-center gap-3 text-xl font-bold text-white mb-6">
+                                    <i class="fas fa-briefcase text-primary"></i> Experience
+                                </h3>
+                                <div class="relative pl-6">
+                                    <div class="timeline-line"></div>
+
+                                    <!-- Item 1 -->
+                                    <div
+                                        class="timeline-item relative mb-8 pb-4 border-b border-gray-800 last:border-0">
+                                        <span
+                                            class="text-xs text-primary border border-gray-700 px-2 py-1 rounded inline-block mb-2">2023
+                                            - Present</span>
+                                        <h4 class="text-white font-semibold text-lg">Senior Web Developer</h4>
+                                        <p class="text-gray-500 text-sm mb-2">Envato Market</p>
+                                        <p class="text-gray-400 text-sm">Collaborate with creative and development teams
+                                            on the execution of ideas.</p>
+                                    </div>
+
+                                    <!-- Item 2 -->
+                                    <div
+                                        class="timeline-item relative mb-8 pb-4 border-b border-gray-800 last:border-0">
+                                        <span
+                                            class="text-xs text-primary border border-gray-700 px-2 py-1 rounded inline-block mb-2">2021
+                                            - 2023</span>
+                                        <h4 class="text-white font-semibold text-lg">Front-end Developer</h4>
+                                        <p class="text-gray-500 text-sm mb-2">Google Inc.</p>
+                                        <p class="text-gray-400 text-sm">Monitored technical performance of internal
+                                            applications.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h3 class="flex items-center gap-3 text-xl font-bold text-white mb-6">
+                                    <i class="fas fa-graduation-cap text-primary"></i> Education
+                                </h3>
+                                <div class="relative pl-6">
+                                    <div class="timeline-line"></div>
+                                    <!-- Item 1 -->
+                                    <div
+                                        class="timeline-item relative mb-8 pb-4 border-b border-gray-800 last:border-0">
+                                        <span
+                                            class="text-xs text-primary border border-gray-700 px-2 py-1 rounded inline-block mb-2">2018
+                                            - 2020</span>
+                                        <h4 class="text-white font-semibold text-lg">Master in Computer Science</h4>
+                                        <p class="text-gray-500 text-sm mb-2">New York University</p>
+                                        <p class="text-gray-400 text-sm">Relevant courses: Data Structures, Algorithms,
+                                            Artificial Intelligence.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-6">Coding Skills</h3>
+                            <div class="space-y-6 bg-sidebar-bg p-8 rounded-xl border border-gray-800">
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-white font-medium">JavaScript</span>
+                                        <span class="text-gray-400 text-sm">90%</span>
+                                    </div>
+                                    <div class="skill-track h-2 bg-gray-800 rounded-full">
+                                        <div class="skill-bar w-0" data-width="90%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-white font-medium">React / Next.js</span>
+                                        <span class="text-gray-400 text-sm">85%</span>
+                                    </div>
+                                    <div class="skill-track h-2 bg-gray-800 rounded-full">
+                                        <div class="skill-bar w-0" data-width="85%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-white font-medium">Tailwind CSS</span>
+                                        <span class="text-gray-400 text-sm">95%</span>
+                                    </div>
+                                    <div class="skill-track h-2 bg-gray-800 rounded-full">
+                                        <div class="skill-bar w-0" data-width="95%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-2">
+                                        <span class="text-white font-medium">Python</span>
+                                        <span class="text-gray-400 text-sm">75%</span>
+                                    </div>
+                                    <div class="skill-track h-2 bg-gray-800 rounded-full">
+                                        <div class="skill-bar w-0" data-width="75%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h3 class="text-xl font-bold text-white mb-6 mt-8">Knowledges</h3>
+                            <div class="flex flex-wrap gap-3">
+                                <span
+                                    class="bg-sidebar-bg border border-gray-800 px-3 py-1 rounded text-sm text-gray-400">Digital
+                                    Design</span>
+                                <span
+                                    class="bg-sidebar-bg border border-gray-800 px-3 py-1 rounded text-sm text-gray-400">Marketing</span>
+                                <span
+                                    class="bg-sidebar-bg border border-gray-800 px-3 py-1 rounded text-sm text-gray-400">Communication</span>
+                                <span
+                                    class="bg-sidebar-bg border border-gray-800 px-3 py-1 rounded text-sm text-gray-400">Time
+                                    Management</span>
+                                <span
+                                    class="bg-sidebar-bg border border-gray-800 px-3 py-1 rounded text-sm text-gray-400">Social
+                                    Media</span>
+                                <span
+                                    class="bg-sidebar-bg border border-gray-800 px-3 py-1 rounded text-sm text-gray-400">Problem
+                                    Solving</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- PORTFOLIO SECTION -->
+                <section id="portfolio" class="section-content">
+                    <div class="section-header mb-10 border-b border-gray-800 pb-4 relative">
+                        <h2 class="text-3xl font-bold text-white">Portfolio</h2>
+                        <div class="absolute bottom-[-1px] left-0 w-16 h-0.5 bg-primary"></div>
+                    </div>
+
+                    <!-- Filters -->
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <button onclick="filterPortfolio('all')"
+                            class="text-sm font-medium text-white hover:text-primary transition-colors cursor-pointer active-filter"
+                            data-filter="all">All</button>
+                        <button onclick="filterPortfolio('design')"
+                            class="text-sm font-medium text-gray-500 hover:text-primary transition-colors cursor-pointer"
+                            data-filter="design">Design</button>
+                        <button onclick="filterPortfolio('dev')"
+                            class="text-sm font-medium text-gray-500 hover:text-primary transition-colors cursor-pointer"
+                            data-filter="dev">Development</button>
+                        <button onclick="filterPortfolio('branding')"
+                            class="text-sm font-medium text-gray-500 hover:text-primary transition-colors cursor-pointer"
+                            data-filter="branding">Branding</button>
+                    </div>
+
+                    <!-- Grid -->
+                    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Project 1 -->
+                        <div class="portfolio-item group relative rounded-lg overflow-hidden cursor-pointer"
+                            data-category="design" onclick="openPortfolioDetail(this)" data-title="Modern Dashboard"
+                            data-subtitle="UI/UX Design" data-client="Tech Startup Inc." data-date="January 2026"
+                            data-tech="Figma, Adobe XD, Sketch">
+                            <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Project"
+                                class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                                <h4
+                                    class="text-white font-bold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Modern Dashboard</h4>
+                                <span
+                                    class="text-white/80 text-sm mt-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">UI/UX
+                                    Design</span>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="portfolio-item group relative rounded-lg overflow-hidden cursor-pointer"
+                            data-category="dev" onclick="openPortfolioDetail(this)" data-title="E-Commerce API"
+                            data-subtitle="Development" data-client="Retail Solutions Ltd." data-date="December 2025"
+                            data-tech="Node.js, Express, MongoDB, Docker">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Project"
+                                class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                                <h4
+                                    class="text-white font-bold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    E-Commerce API</h4>
+                                <span
+                                    class="text-white/80 text-sm mt-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Development</span>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="portfolio-item group relative rounded-lg overflow-hidden cursor-pointer"
+                            data-category="branding" onclick="openPortfolioDetail(this)" data-title="Brand Identity"
+                            data-subtitle="Branding" data-client="Creative Agency Co." data-date="November 2025"
+                            data-tech="Illustrator, Photoshop, InDesign">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Project"
+                                class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                                <h4
+                                    class="text-white font-bold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Brand Identity</h4>
+                                <span
+                                    class="text-white/80 text-sm mt-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">Branding</span>
+                            </div>
+                        </div>
+
+                        <!-- Project 4 -->
+                        <div class="portfolio-item group relative rounded-lg overflow-hidden cursor-pointer"
+                            data-category="dev" onclick="openPortfolioDetail(this)" data-title="Finance App"
+                            data-subtitle="React Native" data-client="FinTech Solutions" data-date="October 2025"
+                            data-tech="React Native, TypeScript, Redux, Firebase">
+                            <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                alt="Project"
+                                class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110">
+                            <div
+                                class="absolute inset-0 bg-primary/90 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                                <h4
+                                    class="text-white font-bold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                    Finance App</h4>
+                                <span
+                                    class="text-white/80 text-sm mt-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">React
+                                    Native</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- BLOG SECTION -->
+                <section id="blog" class="section-content">
+                    <div class="section-header mb-10 border-b border-gray-800 pb-4 relative">
+                        <h2 class="text-3xl font-bold text-white">Latest Blog</h2>
+                        <div class="absolute bottom-[-1px] left-0 w-16 h-0.5 bg-primary"></div>
+                    </div>
+
+                    <!-- Blog Filters -->
+                    <div class="flex flex-wrap gap-4 mb-8">
+                        <button onclick="filterBlog('all')"
+                            class="blog-filter active-filter text-sm font-medium text-white hover:text-primary transition-colors"
+                            data-blog-filter="all">All Post</button>
+                        <button onclick="filterBlog('dev')"
+                            class="blog-filter text-sm font-medium text-gray-500 hover:text-primary transition-colors"
+                            data-blog-filter="dev">Development</button>
+                        <button onclick="filterBlog('design')"
+                            class="blog-filter text-sm font-medium text-gray-500 hover:text-primary transition-colors"
+                            data-blog-filter="design">Design</button>
+                        <button onclick="filterBlog('branding')"
+                            class="blog-filter text-sm font-medium text-gray-500 hover:text-primary transition-colors"
+                            data-blog-filter="branding">Branding</button>
+                    </div>
+
+                    <div id="blog-grid" class="grid md:grid-cols-2 gap-8 mb-12">
+                        <!-- Post 1 -->
+                        <article
+                            class="blog-item bg-sidebar-bg rounded-xl overflow-hidden border border-gray-800 group hover:border-primary transition-all flex flex-col"
+                            data-blog-cat="dev">
+                            <div class="h-56 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Blog Post"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <!-- Date Badge -->
+                                <div
+                                    class="absolute bottom-4 left-4 bg-sidebar-bg/90 backdrop-blur-sm border border-gray-700 rounded-lg p-2 text-center min-w-[50px]">
+                                    <span class="block text-primary font-bold text-lg leading-tight">12</span>
+                                    <span
+                                        class="block text-gray-400 text-[10px] uppercase font-bold tracking-tighter">Feb</span>
+                                </div>
+                            </div>
+                            <div class="p-8 text-center flex-1 flex flex-col">
+                                <span
+                                    class="text-primary text-xs font-bold uppercase tracking-widest mb-3 block">Development</span>
+                                <h3
+                                    class="text-white font-bold text-xl mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                                    How to building a unique vCard template for 2026</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">Discover the best
+                                    practices for creating a professional and engaging online portfolio that stands
+                                    out in the modern digital landscape.</p>
+                                <div class="mt-auto">
+                                    <button onclick="openBlogPost(this)"
+                                        class="inline-flex items-center gap-2 text-primary text-sm font-bold border-b border-primary/30 pb-1 hover:border-primary transition-all cursor-pointer bg-transparent border-0 border-b">
+                                        Read More <i class="fas fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 2 -->
+                        <article
+                            class="blog-item bg-sidebar-bg rounded-xl overflow-hidden border border-gray-800 group hover:border-primary transition-all flex flex-col"
+                            data-blog-cat="design">
+                            <div class="h-56 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Blog Post"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div
+                                    class="absolute bottom-4 left-4 bg-sidebar-bg/90 backdrop-blur-sm border border-gray-700 rounded-lg p-2 text-center min-w-[50px]">
+                                    <span class="block text-primary font-bold text-lg leading-tight">10</span>
+                                    <span
+                                        class="block text-gray-400 text-[10px] uppercase font-bold tracking-tighter">Feb</span>
+                                </div>
+                            </div>
+                            <div class="p-8 text-center flex-1 flex flex-col">
+                                <span
+                                    class="text-primary text-xs font-bold uppercase tracking-widest mb-3 block">Design</span>
+                                <h3
+                                    class="text-white font-bold text-xl mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                                    The future of Web Design in the AI Era</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">Exploring
+                                    upcoming trends like AI-integrated layouts, glassmorphism evolution, and more
+                                    that will shape our tools.</p>
+                                <div class="mt-auto">
+                                    <button onclick="openBlogPost(this)"
+                                        class="inline-flex items-center gap-2 text-primary text-sm font-bold border-b border-primary/30 pb-1 hover:border-primary transition-all cursor-pointer bg-transparent border-0 border-b">
+                                        Read More <i class="fas fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 3 -->
+                        <article
+                            class="blog-item bg-sidebar-bg rounded-xl overflow-hidden border border-gray-800 group hover:border-primary transition-all flex flex-col"
+                            data-blog-cat="branding">
+                            <div class="h-56 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Blog Post"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div
+                                    class="absolute bottom-4 left-4 bg-sidebar-bg/90 backdrop-blur-sm border border-gray-700 rounded-lg p-2 text-center min-w-[50px]">
+                                    <span class="block text-primary font-bold text-lg leading-tight">08</span>
+                                    <span
+                                        class="block text-gray-400 text-[10px] uppercase font-bold tracking-tighter">Feb</span>
+                                </div>
+                            </div>
+                            <div class="p-8 text-center flex-1 flex flex-col">
+                                <span
+                                    class="text-primary text-xs font-bold uppercase tracking-widest mb-3 block">Branding</span>
+                                <h3
+                                    class="text-white font-bold text-xl mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                                    Minimalist Branding: Less is definitely More</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">Why big brands
+                                    are shifting towards minimal identities and how to achieve it for your own
+                                    personal brand.</p>
+                                <div class="mt-auto">
+                                    <button onclick="openBlogPost(this)"
+                                        class="inline-flex items-center gap-2 text-primary text-sm font-bold border-b border-primary/30 pb-1 hover:border-primary transition-all cursor-pointer bg-transparent border-0 border-b">
+                                        Read More <i class="fas fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 4 -->
+                        <article
+                            class="blog-item bg-sidebar-bg rounded-xl overflow-hidden border border-gray-800 group hover:border-primary transition-all flex flex-col"
+                            data-blog-cat="dev">
+                            <div class="h-56 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Blog Post"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div
+                                    class="absolute bottom-4 left-4 bg-sidebar-bg/90 backdrop-blur-sm border border-gray-700 rounded-lg p-2 text-center min-w-[50px]">
+                                    <span class="block text-primary font-bold text-lg leading-tight">05</span>
+                                    <span
+                                        class="block text-gray-400 text-[10px] uppercase font-bold tracking-tighter">Feb</span>
+                                </div>
+                            </div>
+                            <div class="p-8 text-center flex-1 flex flex-col">
+                                <span
+                                    class="text-primary text-xs font-bold uppercase tracking-widest mb-3 block">Development</span>
+                                <h3
+                                    class="text-white font-bold text-xl mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                                    Mastering JavaScript Performance Hacks</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">Advanced
+                                    techniques to optimize your code for faster execution and better user experience
+                                    across all devices.</p>
+                                <div class="mt-auto">
+                                    <button onclick="openBlogPost(this)"
+                                        class="inline-flex items-center gap-2 text-primary text-sm font-bold border-b border-primary/30 pb-1 hover:border-primary transition-all cursor-pointer bg-transparent border-0 border-b">
+                                        Read More <i class="fas fa-arrow-right text-xs"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 5 - Arabic RTL Example -->
+                        <article
+                            class="blog-item bg-sidebar-bg rounded-xl overflow-hidden border border-gray-800 group hover:border-primary transition-all flex flex-col"
+                            data-blog-cat="dev" dir="rtl">
+                            <div class="h-56 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Blog Post"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <!-- Date Badge -->
+                                <div
+                                    class="absolute bottom-4 right-4 bg-sidebar-bg/90 backdrop-blur-sm border border-gray-700 rounded-lg p-2 text-center min-w-[50px]">
+                                    <span class="block text-primary font-bold text-lg leading-tight">14</span>
+                                    <span
+                                        class="block text-gray-400 text-[10px] uppercase font-bold tracking-tighter">فبر</span>
+                                </div>
+                            </div>
+                            <div class="p-8 text-center flex-1 flex flex-col">
+                                <span
+                                    class="text-primary text-xs font-bold uppercase tracking-widest mb-3 block">تطوير</span>
+                                <h3
+                                    class="text-white font-bold text-xl mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                                    دليل شامل لتطوير تطبيقات الويب الحديثة في 2026</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">اكتشف أفضل الممارسات
+                                    والأدوات الحديثة لبناء تطبيقات ويب سريعة وآمنة وقابلة للتوسع. تعلم كيفية استخدام
+                                    أحدث التقنيات والأطر لتحسين تجربة المستخدم.</p>
+                                <div class="mt-auto">
+                                    <button onclick="openBlogPost(this)"
+                                        class="inline-flex items-center gap-2 text-primary text-sm font-bold border-b border-primary/30 pb-1 hover:border-primary transition-all cursor-pointer bg-transparent border-0 border-b">
+                                        <i class="fas fa-arrow-left text-xs"></i>
+                                        اقرأ المزيد
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Post 6 - Arabic RTL Example 2 -->
+                        <article
+                            class="blog-item bg-sidebar-bg rounded-xl overflow-hidden border border-gray-800 group hover:border-primary transition-all flex flex-col"
+                            data-blog-cat="design" dir="rtl">
+                            <div class="h-56 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                                    alt="Blog Post"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                                <div
+                                    class="absolute bottom-4 right-4 bg-sidebar-bg/90 backdrop-blur-sm border border-gray-700 rounded-lg p-2 text-center min-w-[50px]">
+                                    <span class="block text-primary font-bold text-lg leading-tight">01</span>
+                                    <span
+                                        class="block text-gray-400 text-[10px] uppercase font-bold tracking-tighter">فبر</span>
+                                </div>
+                            </div>
+                            <div class="p-8 text-center flex-1 flex flex-col">
+                                <span
+                                    class="text-primary text-xs font-bold uppercase tracking-widest mb-3 block">تصميم</span>
+                                <h3
+                                    class="text-white font-bold text-xl mb-4 group-hover:text-primary transition-colors line-clamp-2">
+                                    مبادئ التصميم الحديث وتجربة المستخدم</h3>
+                                <p class="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">تعرف على أساسيات
+                                    التصميم الجذاب والفعال، وكيفية إنشاء واجهات مستخدم تجمع بين الجمال والسهولة في
+                                    الاستخدام.</p>
+                                <div class="mt-auto">
+                                    <button onclick="openBlogPost(this)"
+                                        class="inline-flex items-center gap-2 text-primary text-sm font-bold border-b border-primary/30 pb-1 hover:border-primary transition-all cursor-pointer bg-transparent border-0 border-b">
+                                        <i class="fas fa-arrow-left text-xs"></i>
+                                        اقرأ المزيد
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Blog Pagination -->
+                    <div class="flex justify-center items-center gap-2 mt-8 mb-12">
+                        <button
+                            class="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition-all cursor-pointer">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button
+                            class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">1</button>
+                        <button
+                            class="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition-all cursor-pointer">2</button>
+                        <button
+                            class="w-10 h-10 rounded-full border border-gray-800 flex items-center justify-center text-gray-500 hover:border-primary hover:text-primary transition-all cursor-pointer">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- BLOG DETAIL SECTION -->
+                <section id="blog-detail" class="section-content">
+                    <div class="mb-8">
+                        <button onclick="showSection('blog')"
+                            class="text-primary flex items-center gap-2 hover:gap-3 transition-all font-semibold">
+                            <i class="fas fa-arrow-left"></i> Back to Blog
+                        </button>
+                    </div>
+
+                    <div id="blog-post-content">
+                        <!-- Content will be injected by JavaScript -->
+                    </div>
+                </section>
+
+                <!-- PORTFOLIO DETAIL SECTION -->
+                <section id="portfolio-detail" class="section-content">
+                    <div class="mb-8">
+                        <button onclick="showSection('portfolio')"
+                            class="text-primary flex items-center gap-2 hover:gap-3 transition-all font-semibold">
+                            <i class="fas fa-arrow-left"></i> Back to Portfolio
+                        </button>
+                    </div>
+
+                    <div id="portfolio-project-content">
+                        <!-- Content will be injected by JavaScript -->
+                    </div>
+                </section>
+                <section id="contact" class="section-content">
+                    <div class="section-header mb-10 border-b border-gray-800 pb-4 relative">
+                        <h2 class="text-3xl font-bold text-white">Contact Me</h2>
+                        <div class="absolute bottom-[-1px] left-0 w-16 h-0.5 bg-primary"></div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-2 gap-10">
+                        <!-- Contact Info -->
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-6">Get in Touch</h3>
+                            <div class="space-y-6">
+                                <div
+                                    class="flex items-center gap-4 bg-sidebar-bg p-4 rounded-lg border border-gray-800">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-primary">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-medium">Phone</h4>
+                                        <p class="text-gray-400 text-sm">+212 6 66 55 44 33</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center gap-4 bg-sidebar-bg p-4 rounded-lg border border-gray-800">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-primary">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-medium">Email</h4>
+                                        <p class="text-gray-400 text-sm">melazhari@mail.com</p>
+                                    </div>
+                                </div>
+                                <div
+                                    class="flex items-center gap-4 bg-sidebar-bg p-4 rounded-lg border border-gray-800">
+                                    <div
+                                        class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-primary">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-medium">Location</h4>
+                                        <p class="text-gray-400 text-sm">Morocco</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Form -->
+                        <div>
+                            <h3 class="text-xl font-bold text-white mb-6">Send Message</h3>
+                            <form onsubmit="event.preventDefault(); alert('This is a demo form. No email was sent.');"
+                                class="space-y-4">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <input type="text" placeholder="Full Name"
+                                        class="bg-sidebar-bg border border-gray-800 text-white p-3 rounded-lg focus:outline-none focus:border-primary w-full transition-colors">
+                                    <input type="email" placeholder="Email Address"
+                                        class="bg-sidebar-bg border border-gray-800 text-white p-3 rounded-lg focus:outline-none focus:border-primary w-full transition-colors">
+                                </div>
+                                <input type="text" placeholder="Subject"
+                                    class="bg-sidebar-bg border border-gray-800 text-white p-3 rounded-lg focus:outline-none focus:border-primary w-full transition-colors">
+                                <textarea rows="4" placeholder="Your Message"
+                                    class="bg-sidebar-bg border border-gray-800 text-white p-3 rounded-lg focus:outline-none focus:border-primary w-full transition-colors"></textarea>
+                                <button type="submit"
+                                    class="bg-primary text-white font-bold py-3 px-8 rounded-full hover:bg-green-600 transition-colors shadow-lg shadow-green-900/20">
+                                    Send Message <i class="fas fa-paper-plane ml-2"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Script at the end of body -->
+    <script src="app.js"></script>
+</body>
+
+</html>

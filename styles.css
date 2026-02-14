@@ -1,0 +1,402 @@
+:root {
+    --primary-color: #007acc; /* VS Code Blue */
+    --sidebar-bg: #252526;   /* VS Code Sidebar Dark */
+    --main-bg: #1e1e1e;      /* VS Code Editor Dark */
+    --page-bg: #1e1e1e;      /* Same as editor for consistency */
+    --text-main: #d4d4d4;    /* VS Code Font Light */
+    --text-muted: #808080;   /* VS Code Muted Font */
+    --border-color: #3c3c3c; /* VS Code Border */
+}
+
+.light {
+    --sidebar-bg: #f3f3f3;   /* VS Code Sidebar Light */
+    --main-bg: #ffffff;      /* VS Code Editor Light */
+    --page-bg: #f8f8f8;      /* Clean Page background */
+    --text-main: #000000;    /* VS Code Font Dark */
+    --text-muted: #6b6b6b;   /* VS Code Muted Font Dark */
+    --border-color: #e5e5e5; /* VS Code Border Light */
+    --primary-color: #007acc; /* Keep VS Code Blue */
+}
+
+body {
+    background-color: var(--page-bg);
+    color: var(--text-main);
+}
+
+.border-gray-800,
+.border-gray-700 {
+    border-color: var(--border-color) !important;
+}
+
+.bg-sidebar-bg {
+    background-color: var(--sidebar-bg);
+}
+
+.bg-dark {
+    background-color: var(--main-bg);
+}
+
+.bg-dark-gray {
+    background-color: var(--sidebar-bg);
+}
+
+.text-white {
+    color: var(--text-main) !important;
+}
+
+.text-gray-300 {
+    color: var(--text-main);
+}
+
+.text-gray-400 {
+    color: var(--text-muted);
+}
+
+.text-gray-500 {
+    color: var(--text-muted);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #222;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Section Transitions */
+.section-content {
+    display: none;
+    opacity: 0;
+}
+
+/* Animation Classes */
+.section-content.active {
+    display: block;
+}
+
+.section-content.exit {
+    display: block;
+    pointer-events: none;
+}
+
+/* Transition Variations */
+.anim-up-in {
+    animation: animInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-up-out {
+    animation: animOutUp 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-down-in {
+    animation: animInDown 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-down-out {
+    animation: animOutDown 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-left-in {
+    animation: animInLeft 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-left-out {
+    animation: animOutLeft 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-right-in {
+    animation: animInRight 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-right-out {
+    animation: animOutRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-scale-in {
+    animation: animInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-scale-out {
+    animation: animOutScale 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes animInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
+
+@keyframes animInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes animOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+}
+
+@keyframes animInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes animOutLeft {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+}
+
+@keyframes animInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes animOutRight {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+}
+
+@keyframes animInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes animOutScale {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.1);
+    }
+}
+
+/* 3D Animations */
+.anim-flip-in {
+    animation: animInFlip 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-flip-out {
+    animation: animOutFlip 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes animInFlip {
+    0% {
+        opacity: 0;
+        transform: rotateX(-90deg) translateZ(200px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotateX(0deg) translateZ(0);
+    }
+}
+
+@keyframes animOutFlip {
+    0% {
+        opacity: 1;
+        transform: rotateX(0deg) translateZ(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotateX(90deg) translateZ(200px);
+    }
+}
+
+.anim-3d-in {
+    animation: animIn3D 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.anim-3d-out {
+    animation: animOut3D 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes animIn3D {
+    0% {
+        opacity: 0;
+        transform: translateZ(-500px) rotateY(90deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateZ(0) rotateY(0);
+    }
+}
+
+@keyframes animOut3D {
+    0% {
+        opacity: 1;
+        transform: translateZ(0) rotateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateZ(-500px) rotateY(-90deg);
+    }
+}
+
+/* Perspective for 3D animations */
+.scroll-container {
+    perspective: 2000px;
+    transform-style: preserve-3d;
+}
+
+.section-content {
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.skill-track {
+    background-color: #333;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.skill-bar {
+    height: 100%;
+    background-color: var(--primary-color);
+    border-radius: 999px;
+    width: 0;
+    transition: width 1s ease-out;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -8px;
+    top: 5px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #222;
+    border: 2px solid var(--primary-color);
+    z-index: 10;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    height: 100%;
+    width: 1px;
+    background: #333;
+}
+
+/* Portfolio filtering transitions */
+.portfolio-item {
+    transition: all 0.3s ease;
+}
+
+.portfolio-item.hidden {
+    display: none;
+}
+
+/* Settings Panel */
+#settings-panel {
+    transition: transform 0.3s ease-in-out;
+    z-index: 100;
+}
+
+#settings-panel.closed {
+    transform: translateX(100%);
+}
+
+/* Background Slider */
+.bg-slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    z-index: -1;
+}
+
+.bg-slider-image.active {
+    opacity: 0.15;
+    /* Low opacity to blend with black background */
+}
