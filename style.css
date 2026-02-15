@@ -1,21 +1,47 @@
+/*
+Theme Name: Melazhari
+Theme URI: https://melazhari.com
+Author: Mohamed elazhari
+Author URI: https://melazhari.com
+Description: A unique vCard WordPress Theme based on Mohamed elazhari's profile.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: melazhari
+*/
+
 :root {
-    --primary-color: #007acc; /* VS Code Blue */
-    --sidebar-bg: #252526;   /* VS Code Sidebar Dark */
-    --main-bg: #1e1e1e;      /* VS Code Editor Dark */
-    --page-bg: #1e1e1e;      /* Same as editor for consistency */
-    --text-main: #d4d4d4;    /* VS Code Font Light */
-    --text-muted: #808080;   /* VS Code Muted Font */
-    --border-color: #3c3c3c; /* VS Code Border */
+    --primary-color: #007acc;
+    /* VS Code Blue */
+    --sidebar-bg: #252526;
+    /* VS Code Sidebar Dark */
+    --main-bg: #1e1e1e;
+    /* VS Code Editor Dark */
+    --page-bg: #1e1e1e;
+    /* Same as editor for consistency */
+    --text-main: #d4d4d4;
+    /* VS Code Font Light */
+    --text-muted: #808080;
+    /* VS Code Muted Font */
+    --border-color: #3c3c3c;
+    /* VS Code Border */
 }
 
 .light {
-    --sidebar-bg: #f3f3f3;   /* VS Code Sidebar Light */
-    --main-bg: #ffffff;      /* VS Code Editor Light */
-    --page-bg: #f8f8f8;      /* Clean Page background */
-    --text-main: #000000;    /* VS Code Font Dark */
-    --text-muted: #6b6b6b;   /* VS Code Muted Font Dark */
-    --border-color: #e5e5e5; /* VS Code Border Light */
-    --primary-color: #007acc; /* Keep VS Code Blue */
+    --sidebar-bg: #f3f3f3;
+    /* VS Code Sidebar Light */
+    --main-bg: #ffffff;
+    /* VS Code Editor Light */
+    --page-bg: #f8f8f8;
+    /* Clean Page background */
+    --text-main: #000000;
+    /* VS Code Font Dark */
+    --text-muted: #6b6b6b;
+    /* VS Code Muted Font Dark */
+    --border-color: #e5e5e5;
+    /* VS Code Border Light */
+    --primary-color: #007acc;
+    /* Keep VS Code Blue */
 }
 
 body {
@@ -399,4 +425,13 @@ body {
 .bg-slider-image.active {
     opacity: 0.15;
     /* Low opacity to blend with black background */
+}
+
+.wpcf7-form input,
+.wpcf7-form textarea {
+    width: 100%;
+}
+
+.wpcf7-form button {
+    cursor: pointer;
 }
