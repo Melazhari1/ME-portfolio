@@ -45,15 +45,15 @@
                 <p class="text-primary font-medium text-sm tracking-wide">Web Developer</p>
 
                 <div class="flex gap-3 mt-4">
-                    <a href="#"
-                        class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
-                            class="fab fa-twitter"></i></a>
-                    <a href="#"
-                        class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
-                            class="fab fa-linkedin-in"></i></a>
-                    <a href="#"
-                        class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"><i
-                            class="fab fa-github"></i></a>
+                    <a href="https://www.facebook.com/elazhari.mohamed.552916"
+                        class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                        target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.linkedin.com/in/elazhari-mohamed-9ba272306/"
+                        class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                        target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/melazhari1"
+                        class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center hover:bg-primary hover:text-white transition-colors"
+                        target="_blank"><i class="fab fa-github"></i></a>
                 </div>
             </div>
 
@@ -61,46 +61,46 @@
             <nav class="flex-1 overflow-y-auto py-4">
                 <ul class="space-y-1">
                     <li>
-                        <button onclick="showSection('home')"
+                        <a href="#home"
                             class="nav-link active w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary text-primary"
                             data-target="home">
                             <i class="fas fa-home w-6 text-center"></i> Home
-                        </button>
+                        </a>
                     </li>
                     <li>
-                        <button onclick="showSection('about')"
+                        <a href="#about"
                             class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
                             data-target="about">
                             <i class="fas fa-user w-6 text-center"></i> About Me
-                        </button>
+                        </a>
                     </li>
                     <li>
-                        <button onclick="showSection('resume')"
+                        <a href="#resume"
                             class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
                             data-target="resume">
                             <i class="fas fa-graduation-cap w-6 text-center"></i> Resume
-                        </button>
+                        </a>
                     </li>
                     <li class="hidden">
-                        <button onclick="showSection('portfolio')"
+                        <a href="#portfolio"
                             class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
                             data-target="portfolio">
                             <i class="fas fa-briefcase w-6 text-center"></i> Portfolio
-                        </button>
+                        </a>
                     </li>
-                    <li class="hidden">
-                        <button onclick="showSection('blog')"
+                    <li>
+                        <a href="#blog"
                             class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
                             data-target="blog">
                             <i class="fas fa-newspaper w-6 text-center"></i> Blog
-                        </button>
+                        </a>
                     </li>
                     <li>
-                        <button onclick="showSection('contact')"
+                        <a href="#contact"
                             class="nav-link w-full text-left px-8 py-3 hover:text-white transition-colors flex items-center gap-3 border-l-2 border-transparent hover:border-primary"
                             data-target="contact">
                             <i class="fas fa-envelope w-6 text-center"></i> Contact
-                        </button>
+                        </a>
                     </li>
                 </ul>
             </nav>

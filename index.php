@@ -12,14 +12,14 @@
             <?php echo get_field('intro', $settingPostId); ?>
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-            <button onclick="showSection('portfolio')"
+            <a href="#portfolio"
                 class="px-8 py-3 bg-primary text-white font-semibold rounded-full hover:bg-green-600 transition-colors shadow-lg shadow-green-900/20">
                 My Portfolio
-            </button>
-            <button onclick="showSection('blog')"
+            </a>
+            <a href="#blog"
                 class="px-8 py-3 border border-gray-600 text-white font-semibold rounded-full hover:border-primary hover:text-primary transition-colors">
                 Read Blog
-            </button>
+            </a>
         </div>
     </div>
 </section>
@@ -150,8 +150,10 @@
                 'post_type' => 'experience',
                 'post_status' => 'publish',
                 'numberposts' => -1,
-                'orderby' => 'menu_order',
-                'order' => 'ASC'
+                'meta_key' => 'start_date',
+                'orderby' => 'meta_value',
+                'order' => 'DESC'
+
             ]);
             ?>
             <div class="mb-8">
@@ -207,8 +209,11 @@
                     'post_type' => 'coding-skill',
                     'post_status' => 'publish',
                     'numberposts' => -1,
-                    'orderby' => 'menu_order',
-                    'order' => 'ASC'
+
+                    'meta_key' => 'level',
+                    'orderby' => 'meta_value_num',
+                    'order' => 'DESC',
+
                 ]);
 
                 foreach ($skills as $post):
@@ -383,17 +388,17 @@
 <!-- BLOG & PORTFOLIO DETAILS (Placeholders for JS injection) -->
 <section id="blog-detail" class="section-content">
     <div class="mb-8">
-        <button onclick="showSection('blog')" class="text-primary flex items-center gap-2 font-semibold">
+        <a href="#blog" class="text-primary flex items-center gap-2 font-semibold">
             <i class="fas fa-arrow-left"></i> Back to Blog
-        </button>
+        </a>
     </div>
     <div id="blog-post-content"></div>
 </section>
 <section id="portfolio-detail" class="section-content">
     <div class="mb-8">
-        <button onclick="showSection('portfolio')" class="text-primary flex items-center gap-2 font-semibold">
+        <a href="#portfolio" class="text-primary flex items-center gap-2 font-semibold">
             <i class="fas fa-arrow-left"></i> Back to Portfolio
-        </button>
+        </a>
     </div>
     <div id="portfolio-project-content"></div>
 </section>

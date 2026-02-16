@@ -56,12 +56,12 @@ function showSection(sectionId) {
 
     // Nav active state update
     document.querySelectorAll('.nav-link').forEach(link => {
-        link.classList.remove('text-primary', 'border-primary');
+        link.classList.remove('active', 'text-primary', 'border-primary');
         link.classList.add('border-transparent');
     });
     const activeLink = document.querySelector(`.nav-link[data-target="${sectionId}"]`);
     if (activeLink) {
-        activeLink.classList.add('text-primary', 'border-primary');
+        activeLink.classList.add('active', 'text-primary', 'border-primary');
         activeLink.classList.remove('border-transparent');
     }
 
@@ -112,9 +112,42 @@ function showSection(sectionId) {
 
     // Mobile menu handling
     if (window.innerWidth < 768) {
-        document.getElementById('sidebar').classList.add('-translate-x-full');
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar && !sidebar.classList.contains('-translate-x-full')) {
+            sidebar.classList.add('-translate-x-full');
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            if (mobileBtn) mobileBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        }
     }
 }
+
+// --- URL Routing Logic ---
+function handleRouting() {
+    const hash = window.location.hash.replace('#', '');
+    const validSections = ['home', 'about', 'resume', 'portfolio', 'blog', 'contact', 'blog-detail', 'portfolio-detail'];
+
+    // Fallback if detail sections are empty (direct load)
+    if (hash === 'blog-detail' && (!document.getElementById('blog-post-content') || !document.getElementById('blog-post-content').innerHTML)) {
+        window.location.hash = 'blog';
+        return;
+    }
+    if (hash === 'portfolio-detail' && (!document.getElementById('portfolio-project-content') || !document.getElementById('portfolio-project-content').innerHTML)) {
+        window.location.hash = 'portfolio';
+        return;
+    }
+
+    if (hash && validSections.includes(hash)) {
+        showSection(hash);
+    } else {
+        showSection('home');
+        // If no hash, set it to home silently without triggering event if possible, 
+        // but simple way is just leave it or set it.
+        // window.location.hash = 'home'; 
+    }
+}
+
+window.addEventListener('hashchange', handleRouting);
+window.addEventListener('DOMContentLoaded', handleRouting);
 
 // --- Skill Bars Animation ---
 function animateSkills() {
@@ -521,6 +554,7 @@ function openBlogPost(button) {
 
     document.getElementById('blog-post-content').innerHTML = content;
     showSection('blog-detail');
+    window.location.hash = 'blog-detail';
 }
 
 // --- Portfolio Detail Logic ---
@@ -766,6 +800,7 @@ function openPortfolioDetail(element) {
 
     document.getElementById('portfolio-project-content').innerHTML = content;
     showSection('portfolio-detail');
+    window.location.hash = 'portfolio-detail';
 }
 
 // --- Testimonial Slider ---
